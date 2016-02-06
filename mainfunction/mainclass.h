@@ -27,7 +27,10 @@
 			Follow boxY;
 			SDL_Window* window = NULL;
 			SDL_Renderer* RENDERER = NULL;
+
 			SDL_Texture* star;
+			SDL_Texture* blood;
+			
 			SDL_Event e;
 			FontRenderer steelfish30;
 

@@ -18,7 +18,10 @@ void MainClass::getEvents() {
 				}
 				else {
 					Particle particle( star, RENDERER, mouse.x, mouse.y, 5, 100 );
-					particles.push_back(particle);
+					for (int i = 0; i < 10; i++) {
+						particle.reset( blood, RENDERER, mouse.x, mouse.y, 5, 100 );
+						particles.push_back(particle);
+					}
 				}
 			}
 			break;

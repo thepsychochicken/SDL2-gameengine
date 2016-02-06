@@ -24,6 +24,7 @@ MainClass::MainClass() {
 	playLogo(RENDERER, windowW, windowH);
 
 	star = loadTexture(RENDERER, "images/particles/star.png");
+	blood = loadTexture(RENDERER, "images/particles/blood.png");
 	SDL_SetTextureBlendMode(star, SDL_BLENDMODE_ADD );
 
 	steelfish30.setFont("fonts/steelfish_rg.ttf", 25);
