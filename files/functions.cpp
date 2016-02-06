@@ -216,7 +216,7 @@ void playLogo(SDL_Renderer* RENDERER, int width, int height) {
 	GAMES = loadTexture(RENDERER, "images/GAMES.png");
 	Follow follow(1000,255,0);
 	int imageWidth = (height/600)*600;
-	int imageHeight = (height/600)*150;
+	int imageHeight = (height/600)*300;
 	SDL_Rect rect = {
 		(width-imageWidth)/2,
 		(height-imageHeight)/2,
