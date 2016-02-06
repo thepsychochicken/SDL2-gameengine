@@ -214,7 +214,7 @@ SDL_Texture* loadTexture( SDL_Renderer* RENDERER, string path ) {
 void playLogo(SDL_Renderer* RENDERER, int width, int height) {
 	SDL_Texture* GAMES;
 	GAMES = loadTexture(RENDERER, "images/GAMES.png");
-	Follow follow(1000,255,0);
+	Follow follow(500,255,0);
 	int imageWidth = (height/600)*600;
 	int imageHeight = (height/600)*300;
 	SDL_Rect rect = {
@@ -237,8 +237,8 @@ void playLogo(SDL_Renderer* RENDERER, int width, int height) {
 		SDL_RenderFillRect(RENDERER , NULL);
 		SDL_RenderPresent( RENDERER );
 	}
-	SDL_Delay(800);
-	follow.reset(1000,0,255);
+	SDL_Delay(1500);
+	follow.reset(500,0,255);
 	while (follow.getPoint() < 255) {
 		while ( SDL_PollEvent(&e) ) {
 
