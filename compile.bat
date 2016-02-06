@@ -1,0 +1,2 @@
+g++ -mwindows -std=c++0x mainfunction/createbuttons.cpp mainfunction/getevents.cpp mainfunction/mainclass.cpp mainfunction/tick.cpp mainfunction/handlemenu.cpp files/fontrenderer.cpp files/timetaker.cpp files/button.cpp files/mouse.cpp files/functions.cpp files/follow.cpp main.cpp -lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf -Wall -o game
+pause

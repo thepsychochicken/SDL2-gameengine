@@ -1,0 +1,6 @@
+// Width of window
+width: 800
+// Height of window
+height: 600
+// Fullscreen setting
+fullscreen: false
