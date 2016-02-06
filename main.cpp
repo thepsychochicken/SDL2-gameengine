@@ -4,6 +4,8 @@
 #include "mainfunction/mainclass.h"
 #include "files/functions.h"
 
+#undef main
+
 int main ( int argc, char* args[] ) {
 	MainClass game;
 
