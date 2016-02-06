@@ -21,12 +21,13 @@ void MainClass::tick(int timePassedMS) {
 		int size = particles.size();
 		//std::cout << "you have " << size << " particles" << std::endl;
 		for (int i = 0; i < size; i++) {
+			particles[i].calc(timePassedS);
+			particles[i].render();
 			while (!particles[i].active) {
 				particles.erase(particles.begin()+i);
 				i++;
+				size = particles.size();
 			}
-			particles[i].calc(timePassedS);
-			particles[i].render();
 		}
 	}
 	color.r = 255;
