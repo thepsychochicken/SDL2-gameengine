@@ -4,3 +4,8 @@ width: 800
 height: 600
 // Fullscreen setting
 fullscreen: false
+
+rightKey: 100
+leftKey: 97
+crouchKey: 115
+jumpKey: 119

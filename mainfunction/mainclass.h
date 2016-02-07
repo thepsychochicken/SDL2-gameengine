@@ -10,6 +10,7 @@
 	#include "../files/functions.h"
 	#include "../files/mouse.h"
 	#include "../files/follow.h"
+	#include "keyboard.h"
 
 	using namespace std;
 
@@ -23,6 +24,7 @@
 			string gameName;
 
 			Mouse mouse;
+			Keyboard keyboard;
 			Follow boxX;
 			Follow boxY;
 			SDL_Window* window = NULL;

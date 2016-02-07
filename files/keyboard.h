@@ -5,18 +5,20 @@
 	#include <vector>
 	#include <string>
 	#include "button.h"
+	#include "functions.h"
 
 	using namespace std;	
 
 	class Keyboard {
 		private:
-			vector < bool > keyStates;
+			vector < Uint8 > keyStates;
 			vector < int > keyValues;
 			vector < string > keyNames;
+			vector < string > keyDesc;
 			vector < Button > buttons;
 		public:
 			Keyboard();
-			void CheckEvent(SDL_Event);
+			void checkEvent(SDL_Event);
 			void addKey( string, int );
 			bool getKeyState( string );
 			bool getKeyState( int );

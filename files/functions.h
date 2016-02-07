@@ -15,6 +15,7 @@
 
 	void changeInConfig( string, int );
 	void changeInConfig( string, bool );
+	int loadConfigInt( string );
 
 	string toString( int );
 

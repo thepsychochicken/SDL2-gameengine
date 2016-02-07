@@ -17,7 +17,7 @@ void MainClass::getEvents() {
 					boxY.reset(200,boxY.getPoint(),mouse.y);
 				}
 				else {
-					Particle particle( blood, RENDERER, mouse.x, mouse.y, 5, 100 );
+					Particle particle( star, RENDERER, mouse.x, mouse.y, 5, 100 );
 					particles.push_back(particle);
 				}
 			}
@@ -56,13 +56,13 @@ void MainClass::getEvents() {
 									whatPauseMenu.pop_back();
 								}
 							}
-	 					if (!pause) {
-							boxX.reset(200,boxX.getPoint(),mouse.x);
-							boxY.reset(200,boxY.getPoint(),mouse.y);
-						}
+		 					if (!pause) {
+								boxX.reset(200,boxX.getPoint(),mouse.x);
+								boxY.reset(200,boxY.getPoint(),mouse.y);
+							}
 						break;
 					default:
-						cout << "Key pressed was: " << e.key.keysym.sym << endl;
+						keyboard.checkEvent(e);
 				}
 				break;
 			default: 

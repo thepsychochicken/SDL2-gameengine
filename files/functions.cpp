@@ -85,7 +85,7 @@ void getWindow(SDL_Window*& window, SDL_Renderer*& RENDERER, int width, int heig
 			}
 			else {
 				//Get window Renderer
-				RENDERER = SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED );
+				RENDERER = SDL_CreateRenderer( window, -1, SDL_RENDERER_PRESENTVSYNC );
 				if (RENDERER != NULL) {
 					SDL_SetRenderDrawColor( RENDERER, 0x00, 0x00, 0x00, 0xFF );
 					SDL_SetRenderDrawBlendMode(RENDERER , SDL_BLENDMODE_BLEND);
@@ -110,6 +110,7 @@ void changeInConfig(string conf, int value) {
 	ifstream file ("config.txt");
 	//fscanf(file, "%s = %s", name, value);
 	string fileContent = "";
+	bool found = false;
 	string line, stringValue;
 	ostringstream changer;
 	changer << value;
@@ -124,10 +125,14 @@ void changeInConfig(string conf, int value) {
 					name = line.substr(0,splitPos);
 					if (name == conf) {
 						line = conf + ": " + stringValue;
+						found = true;
 					}
 				}
-				fileContent += line + "\n";
 			}
+			fileContent += line + "\n";
+		}
+		if (!found) {
+			fileContent += conf + ": " + stringValue;
 		}
 	}
 	else {
@@ -179,6 +184,36 @@ void changeInConfig(string conf, bool value) {
 		saveFile << fileContent;
 		saveFile.close();
 	}
+}
+
+int loadConfigInt( string fieldName) {
+	ifstream file ("config.txt");
+	if (file.is_open()) {
+		string name;
+		string line;
+		int splitPos;
+		while (getline(file,line)) {
+			if (line.length() > 3) {
+				if (line.substr(0,2) != "//") {
+					splitPos = line.find(": ");
+					name = line.substr(0,splitPos);
+					if (name == fieldName) {
+						string value = line.substr(splitPos+2);
+						file.close();
+						return atoi(value.c_str());
+					}
+				}
+			}
+		}
+		file.close();
+		return -1;
+	}
+	else {
+		cout << "File could not be opened" << endl;
+		return -2;
+	}
+	file.close();
+	return -3;
 }
 
 string toString(int value) {
