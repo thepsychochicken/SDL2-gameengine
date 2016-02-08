@@ -128,9 +128,7 @@ bool Keyboard::getKeyState( string keyName) {
 	int size = keyNames.size();
 	for (int i = 0; i < size; i++) {
 		if (keyName == keyNames[i]) {
-			cout << "Line 131 keyboard" << endl;
 			if (keyToggle[i] == true) {
-				cout << "Line 133 keyboard" << endl;
 				if (keyStates[i] <= 1) {
 					return false;
 				}
@@ -139,7 +137,6 @@ bool Keyboard::getKeyState( string keyName) {
 				}
 			}
 			else {
-				cout << "Line 142 keyboard" << endl;
 				if (keyStates[i] > 0) {
 					return true;
 				}
@@ -196,6 +193,9 @@ void Keyboard::createButtons(int screenWidth) {
 				descriptionBoxes.push_back(button);
 
 				buttonText.assign(SDL_GetKeyName(keyValues[j]));
+				if (j == selectedFieldToChange) {
+					buttonText = "Waiting for input";
+				}
 				font->newText(buttonText,800,color,RENDERER);
 				button.reset(buttonX,y,buttonWidth,40,150,150,150,font->renderText(buttonText));
 				button.changeRedState(1,100);
@@ -217,6 +217,7 @@ void Keyboard::checkButtons(Mouse* mouse) {
 		buttonState = buttons[i].check(mouse);
 		if (buttonState == 3) {
 			selectedFieldToChange = i;
+			createButtons(loadConfigInt("width"));
 		}
 	}
 }
