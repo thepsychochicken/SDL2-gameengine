@@ -35,11 +35,11 @@ void MainClass::tick(int timePassedMS) {
 		}
 	}
 	cout << "line 35 tick" << endl;
-	//if (keyboard.getKeyState("fpsKey")) {
+	if (keyboard.getKeyState("fpsKey")) {
 		color.r = 255;
 		color.g = 255;
 		color.b = 255;
 		steelfish30.renderDynamicText( averageFPS, 300, color, RENDERER, windowW-120, 20 );
-	//}
+	}
 	SDL_RenderPresent( RENDERER );
 }
