@@ -9,3 +9,4 @@ rightKey: 100
 leftKey: 97
 crouchKey: 115
 jumpKey: 119
+fpsKey: 105

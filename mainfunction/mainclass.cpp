@@ -30,6 +30,10 @@ MainClass::MainClass() {
 	steelfish30.setFont("fonts/steelfish_rg.ttf", 25);
 	godofwar45.setFont("fonts/steelfish_rg.ttf", 40);
 	
+	keyboard.setFont(&steelfish30);
+	keyboard.setRenderer(RENDERER);
+	keyboard.createButtons(windowW);
+
 	color.r = 255;
 	color.g = 255;
 	color.b = 255;

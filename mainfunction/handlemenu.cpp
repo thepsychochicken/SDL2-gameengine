@@ -51,6 +51,9 @@ void MainClass::handleMenu() {
 								case 1:
 									whatPauseMenu.push_back(i);
 									break;
+								case 2:
+									whatPauseMenu.push_back(i);
+									break;
 							}
 						}
 					}
@@ -98,6 +101,10 @@ void MainClass::handleMenu() {
 								}
 							}
 							break;	
+						case 2:
+							keyboard.checkButtons(&mouse);
+							keyboard.renderButtons();
+							break;
 					}
 				}
 				break;

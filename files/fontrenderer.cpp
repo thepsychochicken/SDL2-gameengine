@@ -40,24 +40,36 @@ void FontRenderer::setFont(string fontName, int size) {
 FontRenderer::FontRenderer() {
 }
 
-void FontRenderer::newText( string text, int width, SDL_Color textColor, SDL_Renderer *& RENDERER) {
-	SDL_Surface* textSurface = TTF_RenderText_Blended( font, text.c_str(), textColor);
-	if (textSurface != NULL) {
-		SDL_Texture* newText = SDL_CreateTextureFromSurface( RENDERER, textSurface );
-		if (newText != NULL) { // Be a good thing
-			texts.push_back(text);
-			textures.push_back(newText); // Saved to vector before killed
-			cout << "Texture succesfully created" << " - Wrote text: '" << text << "'" << endl;
-		} // Me looses control when you don't let me use my own computerPÅIK
-		else {
-			cout << "Could not make Texture!" << endl;
+void FontRenderer::newText( string text, int width, SDL_Color textColor, SDL_Renderer * RENDERER) {
+	bool found = false;
+	int size = texts.size();
+	for (int i = 0; i < size; i++) {
+		if (texts[i] == text) {
+			found = true;
 		}
-		//SDL_DestroyTexture(newText); // pls try *puppy eyes*
+	}
+	if (!found) {
+		SDL_Surface* textSurface = TTF_RenderText_Blended( font, text.c_str(), textColor);
+		if (textSurface != NULL) {
+			SDL_Texture* newText = SDL_CreateTextureFromSurface( RENDERER, textSurface );
+			if (newText != NULL) { // Be a good thing
+				texts.push_back(text);
+				textures.push_back(newText); // Saved to vector before killed
+				cout << "Texture succesfully created" << " - Wrote text: '" << text << "'" << endl;
+			} // Me looses control when you don't let me use my own computerPÅIK
+			else {
+				cout << "Could not make Texture!" << endl;
+			}
+			//SDL_DestroyTexture(newText); // pls try *puppy eyes*
+		}
+		else {
+			cout << "Could not load Font!" << endl;
+		}
+		SDL_FreeSurface(textSurface);
 	}
 	else {
-		cout << "Could not load Font!" << endl;
+		cout << "'" << text << "' was already in the library!";
 	}
-	SDL_FreeSurface(textSurface);
 }
 
 void FontRenderer::renderDynamicText( string text, int width, SDL_Color textColor, SDL_Renderer *& RENDERER, int x, int y ) {

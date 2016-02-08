@@ -65,8 +65,6 @@ void MainClass::getEvents() {
 						keyboard.checkEvent(e);
 				}
 				break;
-			default: 
-				cout << e.type << endl;
 		}
 	}
 }

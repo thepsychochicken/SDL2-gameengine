@@ -1,10 +1,14 @@
 #include "mainclass.h"
 #include "fontrenderer.h"
 
+using namespace std;
+
 void MainClass::tick(int timePassedMS) {
 	float timePassedS = (double)timePassedMS/1000;
 	//std::cout << "Time passed in seconds: " << timePassedS << std::endl;  
+	cout << "line 9 tick" << endl;
 	getEvents();
+	cout << "line 11 tick" << endl;
 	SDL_SetRenderDrawColor( RENDERER, 0, 0, 0, 0 );
 	SDL_RenderClear(RENDERER);
 	if (!pause) {
@@ -30,9 +34,12 @@ void MainClass::tick(int timePassedMS) {
 			}
 		}
 	}
-	color.r = 255;
-	color.g = 255;
-	color.b = 255;
-	steelfish30.renderDynamicText( averageFPS, 300, color, RENDERER, windowW-120, 20 );
+	cout << "line 35 tick" << endl;
+	//if (keyboard.getKeyState("fpsKey")) {
+		color.r = 255;
+		color.g = 255;
+		color.b = 255;
+		steelfish30.renderDynamicText( averageFPS, 300, color, RENDERER, windowW-120, 20 );
+	//}
 	SDL_RenderPresent( RENDERER );
 }
